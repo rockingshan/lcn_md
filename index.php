@@ -32,7 +32,7 @@ $display = "<table cellpadding=\"1\" align=\"center\">
   <tr>
     <th>GENRE</th>
     <th>LCN</th>
-    <th>CHANNEL NAME from git</th>
+    <th>CHANNEL NAME </th>
   </tr>";
   //sending the results to an array and printing
   while($row = mysqli_fetch_array($result)) { 
