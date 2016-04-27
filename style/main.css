@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background:#F0FFFF;
+	font-family: 'Lato', sanserif;
+}
+th{
+	background:#FFEBCD;
+	font:Verdana, Geneva, sans-serif;
+}
+td{
+	padding:0px
+	white-space:nowrap;
+}
