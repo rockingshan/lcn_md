@@ -29,6 +29,9 @@ if (!$result) { // add this check.
 	<td align="left" valign="top">
 		User logged in: <?php {echo $_SESSION['user'];} ?>
 	</td>
+	<td>
+		<input type="button" name="logout" value="logout" action="logout.php" />
+	</td>
 <td>
 <?php
 //initializing the display variable to print the table on webpage
