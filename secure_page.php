@@ -25,11 +25,7 @@ if (!$result) { // add this check.
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 <script src="jquery/jquery-2.2.3.js"></script>
 <script>
-	$document.ready(function () {
-		$("#delete").attr('title','Tooltip text');
-	  
-	})
-	
+
 </script>
 <title>LCN edit Mode</title>
 
