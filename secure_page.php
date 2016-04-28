@@ -23,10 +23,21 @@ if (!$result) { // add this check.
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
+<script src="jquery/jquery-2.2.3.js"></script>
+<script>
+	$document.ready(function () {
+		$("#delete").attr('title','Tooltip text');
+	  
+	})
+	
+</script>
 <title>LCN edit Mode</title>
+
+
 </head>
 
 <body>
+
 <table align="center">
 <tr>
 	<td align="left" valign="top">
