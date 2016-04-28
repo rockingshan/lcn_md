@@ -3,6 +3,9 @@
 <head>
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+	header("location:index.php");	
+}
 //starting the connection to db
 include("include/connect.php");
 //making the search in db
@@ -29,8 +32,8 @@ if (!$result) { // add this check.
 	<td align="left" valign="top">
 		User logged in: <?php {echo $_SESSION['user'];} ?>
 	</td>
-	<td>
-		<input type="button" name="logout" value="logout" action="logout.php" />
+	<td align="left" valign="top">
+		<a href="logout.php"><input type="submit" name="logout" value="Logout"  /></a>
 	</td>
 <td>
 <?php
