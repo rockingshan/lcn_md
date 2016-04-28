@@ -5,7 +5,7 @@
 //starting the connection to db
 include("include/connect.php");
 //making the search in db
-$sql = "SELECT * FROM channel_tb,lcn_tb WHERE channel_tb.lcn=lcn_tb.lcn";
+$sql = "SELECT * FROM channel_tb,lcn_tb WHERE channel_tb.lcn=lcn_tb.lcn ORDER BY lcn_tb.lcn";
 
 //an alternative query
 //$sql2 = "SELECT lcn_tb.genre,lcn_tb.lcn,channel_tb.channel FROM lcn_tb LEFT JOIN channel_tb ON lcn_tb.lcn=channel_tb.lcn";
@@ -25,6 +25,16 @@ if (!$result) { // add this check.
 <body>
 <table align="center">
 <tr>
+	<td align="left" valign="top">
+		<td align="left" valign="top"><form id="login" action="submit.php" method="post">
+			<td align="left" valign="top"><input type="text" name="user" value="" /></td>
+			<td align="left" valign="top"><input type="text" name="pass" value="" /></td>
+			<td align="left" valign="top"><input type="submit" name="submit" value="Submit" /></td>
+			
+		</form>
+			
+		</td>
+	</td>
 <td>
 <?php
 //initializing the display variable to print the table on webpage
