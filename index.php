@@ -26,7 +26,7 @@ if (!$result) { // add this check.
 <table align="center">
 <tr>
 	<td align="left" valign="top">
-		<td align="left" valign="top"><form id="login" action="submit.php" method="post">
+		<td align="left" valign="top"><form autocomplete="off" id="login" action="submit.php" method="post">
 			<td align="left" valign="top"><input type="text" name="user" value="" /></td>
 			<td align="left" valign="top"><input type="text" name="pass" value="" /></td>
 			<td align="left" valign="top"><input type="submit" name="submit" value="Submit" /></td>
