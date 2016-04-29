@@ -13,7 +13,7 @@ if (!$edit_result) { // add this check.
 }
 $edit_row = mysqli_fetch_array($edit_result)
 
-$blank_lcn_sql=""
+
 ?>
 
 <html>
