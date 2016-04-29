@@ -34,7 +34,7 @@ if (!$result) { // add this check.
 
 <body>
 
-<table align="center">
+<table align="left">
 <tr>
 	<td align="left" valign="top">
 		User logged in: <?php {echo $_SESSION['user'];} ?>
@@ -57,9 +57,9 @@ $display = "<table cellpadding=\"1\" align=\"center\">
     <td>".$row['genre']."</td>
     <td>".$row['lcn']."</td>
     <td>".$row['channel'].'</td>
-    <td><input type="button" name="edit" value="Edit"></td>
-    <td><input type="button" name="swap" value="Swap"></td>
-    <td><input type="button" name="delete" value="Delete"></td>
+    <td><a href="lcn_edit.php?sid='.$row['sid'].'"><input type="button" name="edit" value="Edit"></a></td>
+    <td><a href="lcn_swap.php?sid='.$row['sid'].'"><input type="button" name="swap" value="Swap"></a></td>
+    <td><a href="lcn_delete.php?sid='.$row['sid'].'"><input type="button" name="delete" value="Delete"></a></td>
   </tr>';
   }
   $display.= "</table>";
@@ -68,6 +68,7 @@ $display = "<table cellpadding=\"1\" align=\"center\">
 </td>
 </tr>
 </table>
+
 
 
 </body>
