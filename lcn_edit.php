@@ -12,6 +12,8 @@ if (!$edit_result) { // add this check.
     die('Invalid query: ' . mysqli_error());
 }
 $edit_row = mysqli_fetch_array($edit_result)
+
+$blank_lcn_sql=""
 ?>
 
 <html>
