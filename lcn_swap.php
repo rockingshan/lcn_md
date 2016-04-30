@@ -42,7 +42,7 @@ $swap_result=mysqli_query($con, $swap_sql);
 				
 				<td colspan="3" align="center">
 					<?php
-						echo '<select name="swap_lcn">';
+						echo '<select name="swap_sid">';
 						while($swap_row=mysqli_fetch_array($swap_result))
 						{
 							echo "<option value=".$swap_row['sid'].">".$swap_row['sid']."   ||   ".$swap_row['channel']."   ||   ".$swap_row['lcn']."</option>";
@@ -53,7 +53,7 @@ $swap_result=mysqli_query($con, $swap_sql);
 				</tr>
 				<tr>
 				<td colspan="3" align="center">
-					<input type="hidden" name="edit_sid" value="<?php echo $edit_row['sid']; ?>" />
+					<input type="hidden" name="new_sid" value="<?php echo $edit_row['sid']; ?>" />
 					<input type="submit" value="Swap LCN" />
 				</td>
 			</tr>

@@ -7,7 +7,11 @@ if (!isset($_SESSION['user'])) {
 include("include/connect.php");
 
 
-echo $_POST['swap_lcn'];
+$swap_sid= $_POST['swap_sid'];
+$new_sid= $_POST['new_sid'];
+
+echo $swap_sid;
+echo $new_sid;
 
 
 ?>
