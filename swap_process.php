@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
 include("include/connect.php");
 
 
-echo $_POST['new_lcn'];
+echo $_POST['swap_lcn'];
 
 
 ?>

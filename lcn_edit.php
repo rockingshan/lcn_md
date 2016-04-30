@@ -13,7 +13,7 @@ if (!$edit_result) { // add this check.
 }
 $edit_row = mysqli_fetch_array($edit_result);
 
-$blank_lcn_sql="SELECT lcn from lcn_tb WHERE lcn_tb.lcn NOT IN (SELECT lcn FROM channel_tb)";
+$blank_lcn_sql="SELECT * from lcn_tb WHERE lcn_tb.lcn NOT IN (SELECT lcn FROM channel_tb)";
 $blank_lcn_result=mysqli_query($con,$blank_lcn_sql);
 if (!$blank_lcn_result) { // add this check.
     die('Invalid query: ' . mysqli_error());
@@ -28,7 +28,7 @@ if (!$blank_lcn_result) { // add this check.
 	</head>
 	
 	<body>
-		<form action="process.php" method="post">
+		<form action="lcnedit_process.php" method="post">
 		<table align="center" cellspacing="3" cellpadding="3">
 			<tr>
 				<th>SID</th><th>CHANNEL</th><th>LCN</th>
@@ -54,7 +54,7 @@ if (!$blank_lcn_result) { // add this check.
 						?>
 				</td>
 				<td>
-					
+					<input type="hidden" name="edit_sid" value="<?php echo $edit_row['sid']; ?>" />
 					<input type="submit" value="Change LCN" />
 				</td>
 			</tr>
