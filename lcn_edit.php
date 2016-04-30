@@ -11,7 +11,13 @@ $edit_result = mysqli_query($con,$edit_sql);
 if (!$edit_result) { // add this check.
     die('Invalid query: ' . mysqli_error());
 }
-$edit_row = mysqli_fetch_array($edit_result)
+$edit_row = mysqli_fetch_array($edit_result);
+
+$blank_lcn_sql="SELECT lcn from lcn_tb WHERE lcn_tb.lcn NOT IN (SELECT lcn FROM channel_tb)";
+$blank_lcn_result=mysqli_query($con,$blank_lcn_sql);
+if (!$blank_lcn_result) { // add this check.
+    die('Invalid query: ' . mysqli_error());
+}
 
 
 ?>
@@ -22,6 +28,7 @@ $edit_row = mysqli_fetch_array($edit_result)
 	</head>
 	
 	<body>
+		<form action="process.php" method="post">
 		<table align="center" cellspacing="3" cellpadding="3">
 			<tr>
 				<th>SID</th><th>CHANNEL</th><th>LCN</th>
@@ -29,15 +36,31 @@ $edit_row = mysqli_fetch_array($edit_result)
 			<tr>
 				<td><?php echo $edit_row['sid'] ?></td>
 				<td><?php echo $edit_row['channel'] ?></td>
-				<td align="center"><?php echo $edit_row['lcn'] ?></td>
-				
-				
+				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
+			</tr>
+			<tr align="center">
+				<th></th><th>Select new LCN</th>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<?php
+						echo '<select name="new_lcn">';
+						while($blank_lcn_row=mysqli_fetch_array($blank_lcn_result))
+						{
+							echo "<option value=".$blank_lcn_row['lcn'].">".$blank_lcn_row['lcn']."</option>";
+						}
+						echo "</select>";
+						?>
+				</td>
+				<td>
+					
+					<input type="submit" value="Change LCN" />
+				</td>
 			</tr>
 			
-			
-			
 		</table>
-		
+		</form>
 		
 		
 		
