@@ -3,7 +3,7 @@
 <head>
 <?php
 session_start();
-$_SESSION['sidcounter']=array();
+
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	
 }

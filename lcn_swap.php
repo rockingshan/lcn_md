@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }

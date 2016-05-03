@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }
@@ -27,5 +28,6 @@ mysqli_query($con,$query_new_old);
 $_SESSION['sidcounter'][]=$old_sid;
 $_SESSION['sidcounter'][]=$swap_sid;
 header("location:secure_page.php");
+
 
 ?>

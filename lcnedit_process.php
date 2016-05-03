@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }
@@ -17,7 +18,7 @@ $lcn_edit_sql="UPDATE channel_tb SET `lcn`='$new_lcn', `lcnhex`='$new_lcn_hex' W
 $lcn_edit_result=mysqli_query($con, $lcn_edit_sql);
 if ($lcn_edit_result) {
 	header("location:secure_page.php");
-	$_SESSION[sidcounter][]=$edit_sid;
+	$_SESSION['sidcounter'][]=$edit_sid;
 } else {
 	 die('Invalid query: ' . mysqli_error());
 }

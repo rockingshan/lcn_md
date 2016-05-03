@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['sidcounter']=array();
 //starting the connection to db
 include("include/connect.php");
 
