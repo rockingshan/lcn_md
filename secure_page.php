@@ -3,6 +3,7 @@
 <head>
 <?php
 session_start();
+$_SESSION['sidcounter']=array();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	
 }
@@ -42,6 +43,12 @@ if (!$result) { // add this check.
 	<td align="left" valign="top">
 		<a href="logout.php"><input type="submit" name="logout" value="Logout"  /></a>
 	</td>
+</tr>
+<tr rowspan="2"></tr>
+<tr><td align="left"><a href="submit_data.php">Get Submit Data</a></td></tr>
+</table>
+<table align="center">
+	<tr>
 <td>
 <?php
 //initializing the display variable to print the table on webpage

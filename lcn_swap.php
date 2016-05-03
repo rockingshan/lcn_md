@@ -1,5 +1,4 @@
 <?php
-session_start();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }
@@ -53,7 +52,7 @@ $swap_result=mysqli_query($con, $swap_sql);
 				</tr>
 				<tr>
 				<td colspan="3" align="center">
-					<input type="hidden" name="new_sid" value="<?php echo $edit_row['sid']; ?>" />
+					<input type="hidden" name="old_sid" value="<?php echo $edit_row['sid']; ?>" />
 					<input type="submit" value="Swap LCN" />
 				</td>
 			</tr>
