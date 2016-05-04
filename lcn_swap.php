@@ -4,7 +4,7 @@ if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }
 //starting the connection to db
-include("include/connect.php");
+require_once "include/connect.php";
 
 $swap_sid=$_GET['sid'];
 $edit_sql= "SELECT * from channel_tb WHERE sid='$swap_sid'";

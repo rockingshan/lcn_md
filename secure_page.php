@@ -8,7 +8,7 @@ if (!isset($_SESSION['user'])) {
 	header("location:index.php");	
 }
 //starting the connection to db
-include("include/connect.php");
+require_once "include/connect.php";
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb WHERE channel_tb.lcn=lcn_tb.lcn ORDER BY lcn_tb.lcn";
 

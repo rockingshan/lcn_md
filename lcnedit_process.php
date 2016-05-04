@@ -4,7 +4,7 @@ if (!isset($_SESSION['user'])) {
 	header("location:index.php");	//redirect to index page if not logged in
 }
 //starting the connection to db
-include("include/connect.php");
+require_once "include/connect.php";
 
 
 $new_lcn=$_POST['new_lcn'];

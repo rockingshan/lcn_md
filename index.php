@@ -4,11 +4,9 @@
 <?php
 //starting the connection to db
 include("include/connect.php");
+			
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb WHERE channel_tb.lcn=lcn_tb.lcn ORDER BY lcn_tb.lcn";
-
-//an alternative query
-//$sql2 = "SELECT lcn_tb.genre,lcn_tb.lcn,channel_tb.channel FROM lcn_tb LEFT JOIN channel_tb ON lcn_tb.lcn=channel_tb.lcn";
 
 $result = mysqli_query($con,$sql);
 if (!$result) { // add this check.
@@ -27,9 +25,9 @@ if (!$result) { // add this check.
 <tr>
 	<td align="left" valign="top">
 		<td align="left" valign="top"><form autocomplete="off" id="login" action="submit.php" method="post">
-			<td align="left" valign="top"><input type="text" name="user" value="" /></td>
-			<td align="left" valign="top"><input type="text" name="pass" value="" /></td>
-			<td align="left" valign="top"><input type="submit" name="submit" value="Submit" /></td>
+			<tr align="left" valign="top"><input type="text" name="user" value="" /></tr>
+			<tr align="left" valign="top"><input type="text" name="pass" value="" /></tr>
+			<tr align="left" valign="top"><input type="submit" name="submit" value="Submit" /></tr>
 			
 		</form>
 			
@@ -54,13 +52,14 @@ $display = "<table cellpadding=\"1\" align=\"center\">
   }
   $display.= "</table>";
   echo $display;
+  
  ?>
 </td>
-<!-- <td valign="top"><form action = "export.php" method = "get">
+<td valign="top"><form action = "export.php" method = "get">
        <input type = "hidden" name = "body" value = "" >
        <input type = "submit" name = "submit" Value = "Export to excel">
     </form> 
-    </td> -->
+    </td>
 </tr>
 </table>
 
