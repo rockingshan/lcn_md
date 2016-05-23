@@ -34,8 +34,8 @@ if (!$blank_lcn_result) { // add this check.
 				<th>SID</th><th>CHANNEL</th><th>LCN</th>
 			</tr>
 			<tr>
-				<td><?php echo $edit_row['sid'] ?></td>
-				<td><?php echo $edit_row['channel'] ?></td>
+				<td align="center"><?php echo $edit_row['sid'] ?></td>
+				<td align="center"><?php echo $edit_row['channel'] ?></td>
 				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
 			</tr>
 			<tr align="center">
@@ -48,7 +48,7 @@ if (!$blank_lcn_result) { // add this check.
 						echo '<select name="new_lcn">';
 						while($blank_lcn_row=mysqli_fetch_array($blank_lcn_result))
 						{
-							echo "<option value=".$blank_lcn_row['lcn'].">".$blank_lcn_row['lcn']."</option>";
+							echo "<option value=".$blank_lcn_row['lcn'].">".$blank_lcn_row['genre']."   ||   ".$blank_lcn_row['lcn']."</option>";
 						}
 						echo "</select>";
 						?>

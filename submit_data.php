@@ -136,5 +136,7 @@ $objWriter->save(str_replace(__FILE__,$full_file_name,__FILE__));
 
 ?>
 </table>
+
+<h4 align="center"><a href="secure_page.php">Get back to Edit Mode</a></h3>
 </body>
 </html>

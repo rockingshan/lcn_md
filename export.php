@@ -74,7 +74,7 @@ while($row = mysqli_fetch_array($result)){
   $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowcount, $row['channel']);
   $rowcount++;
 }
-$file_name="LCN ".Date('Ymd').".xlsx";
+$file_name="LCN ".Date('Y-m-d').".xlsx";
 $objPHPExcel->setActiveSheetIndex(0);
 // Redirect output to a client’s web browser (Excel2007)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
