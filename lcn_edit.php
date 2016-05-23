@@ -25,6 +25,8 @@ if (!$blank_lcn_result) { // add this check.
 <html>
 	<head>
 		<h1 align="center">Edit LCN here</h1>
+		<link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 	</head>
 	
 	<body>
@@ -37,6 +39,7 @@ if (!$blank_lcn_result) { // add this check.
 				<td align="center"><?php echo $edit_row['sid'] ?></td>
 				<td align="center"><?php echo $edit_row['channel'] ?></td>
 				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
+				<td align="center"><a href="lcn_name_edit.php?sid='<?php echo $edit_row['sid'] ?>'"><input type="button" name="edit" value="Edit Name"></a></td>
 			</tr>
 			<tr align="center">
 				<th></th><th>Select new LCN</th>
@@ -57,6 +60,7 @@ if (!$blank_lcn_result) { // add this check.
 					<input type="hidden" name="edit_sid" value="<?php echo $edit_row['sid']; ?>" />
 					<input type="submit" value="Change LCN" />
 				</td>
+				<td align="center"><a href="secure_page.php"><input type="button" name="edit" value="Get Back to Overview"></a></td>
 			</tr>
 			
 		</table>

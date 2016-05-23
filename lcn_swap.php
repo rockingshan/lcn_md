@@ -22,6 +22,8 @@ $swap_result=mysqli_query($con, $swap_sql);
 <html>
 	<head>
 		<h1 align="center">Swap LCN here</h1>
+		<link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 	</head>
 	
 	<body>
