@@ -5,6 +5,7 @@ if (!isset($_SESSION['user'])) {
 }
 //starting the connection to db
 require_once "include/connect.php";
+include 'include/log.php';
 if (isset($_GET['edit_flag'])){
 	$new_name=$_GET['new_name'];
 	$old_sid=$_GET['editname_sid'];
@@ -12,7 +13,8 @@ if (isset($_GET['edit_flag'])){
 	$editname_result=mysqli_query($con,$name_update_sql);
 	if (!$editname_result) { // add this check.
     die('Error: ' . mysqli_error($con));
-}
+    }
+    write_log($old_sid." name changed to '".$new_name."'");
 	header("location:lcn_edit.php?sid=$old_sid");
 }else{
 $edit_sid=$_GET['sid'];
@@ -27,6 +29,14 @@ $editname_row = mysqli_fetch_array($editname_result);
 
 <html>
 	<head>
+		<link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 		<link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 		<h1 align="center">Edit Channel Name here</h1>

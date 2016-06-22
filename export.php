@@ -1,5 +1,6 @@
 <?php
 include("include/connect.php");
+include 'include/log.php';
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
@@ -74,7 +75,7 @@ while($row = mysqli_fetch_array($result)){
   $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowcount, $row['channel']);
   $rowcount++;
 }
-$file_name="LCN ".Date('Y-m-d').".xlsx";
+$file_name="LCN_".Date('Y-m-d').".xlsx";
 $objPHPExcel->setActiveSheetIndex(0);
 // Redirect output to a client’s web browser (Excel2007)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

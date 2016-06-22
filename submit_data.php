@@ -5,6 +5,7 @@ if (!isset($_SESSION['user'])) {
 }
 //starting the connection to db
 require_once "include/connect.php";
+include 'include/log.php';
 date_default_timezone_set('Asia/Kolkata');
 
 $ts_array=array();
@@ -22,6 +23,14 @@ $ts_un_array=array_unique($ts_array);
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
@@ -32,7 +41,7 @@ $ts_un_array=array_unique($ts_array);
 })();</script> 
 </head>
 <body>
-	
+	<div class="datagrid">
 	<table align="center">
 		<tr><th>TS Number</th><th>BAT Submition data</th></tr>
 		
@@ -136,7 +145,7 @@ $objWriter->save(str_replace(__FILE__,$full_file_name,__FILE__));
 
 ?>
 </table>
-
+</div>
 <h4 align="center"><a href="secure_page.php">Get back to Edit Mode</a></h3>
 </body>
 </html>

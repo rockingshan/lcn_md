@@ -5,6 +5,7 @@ if (!isset($_SESSION['user'])) {
 }
 //starting the connection to db
 include("include/connect.php");
+include 'include/log.php';
 $edit_sid=$_GET['sid'];
 $edit_sql= "SELECT * from channel_tb WHERE sid='$edit_sid'";
 $edit_result = mysqli_query($con,$edit_sql);
@@ -24,13 +25,22 @@ if (!$blank_lcn_result) { // add this check.
 
 <html>
 	<head>
+		<link rel="icon" type="image/png" sizes="192x192"  href="images/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="manifest" href="/images/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
 		<h1 align="center">Edit LCN here</h1>
 		<link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 	</head>
 	
 	<body>
-		<form action="lcnedit_process.php" method="post">
+		<form action="./process/lcnedit_process.php" method="post">
+			<div class="datagrid">
 		<table align="center" cellspacing="3" cellpadding="3">
 			<tr>
 				<th>SID</th><th>CHANNEL</th><th>LCN</th>
@@ -39,7 +49,7 @@ if (!$blank_lcn_result) { // add this check.
 				<td align="center"><?php echo $edit_row['sid'] ?></td>
 				<td align="center"><?php echo $edit_row['channel'] ?></td>
 				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
-				<td align="center"><a href="lcn_name_edit.php?sid='<?php echo $edit_row['sid'] ?>'"><input type="button" name="edit" value="Edit Name"></a></td>
+				<td align="center"><a href="lcn_name_edit.php?sid='<?php echo $edit_row['sid'] ?>'"><input type="button" class="btn" name="edit" value="Edit Name"></a></td>
 			</tr>
 			<tr align="center">
 				<th></th><th>Select new LCN</th>
@@ -58,12 +68,13 @@ if (!$blank_lcn_result) { // add this check.
 				</td>
 				<td>
 					<input type="hidden" name="edit_sid" value="<?php echo $edit_row['sid']; ?>" />
-					<input type="submit" value="Change LCN" />
+					<input type="submit" class="btn" value="Change LCN" />
 				</td>
-				<td align="center"><a href="secure_page.php"><input type="button" name="edit" value="Get Back to Overview"></a></td>
+				<td align="center"><a href="secure_page.php"><input type="button" class="btn" name="edit" value="Get Back to Overview"></a></td>
 			</tr>
 			
 		</table>
+		</div>
 		</form>
 		
 		
