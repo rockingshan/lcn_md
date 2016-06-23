@@ -124,7 +124,7 @@ $rowcount++;
 
 $objPHPExcel->setActiveSheetIndex(0);
 
-$file__name=$pack_var."_Package.xlsx";
+$file__name=$pack_var."_Package.pdf";
 // Redirect output to a client’s web browser (Excel2007)
 //header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
