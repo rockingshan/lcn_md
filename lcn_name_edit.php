@@ -9,12 +9,13 @@ include 'include/log.php';
 if (isset($_GET['edit_flag'])){
 	$new_name=$_GET['new_name'];
 	$old_sid=$_GET['editname_sid'];
+	$old_name=$_GET['old_name'];
 	$name_update_sql="UPDATE channel_tb SET channel='$new_name' WHERE sid='$old_sid'";
 	$editname_result=mysqli_query($con,$name_update_sql);
 	if (!$editname_result) { // add this check.
     die('Error: ' . mysqli_error($con));
     }
-    write_log($old_sid." name changed to '".$new_name."'");
+    write_log($old_sid." name changed from'".$old_name."' to '".$new_name."'");
 	header("location:lcn_edit.php?sid=$old_sid");
 }else{
 $edit_sid=$_GET['sid'];
@@ -55,6 +56,7 @@ alert("Changing name here will not update name in PSI/SI. You will have to updat
 				<td align="center"><input type="text" name="new_name"/></td>
 				<input type="hidden" name="editname_sid" value="<?php echo $editname_row['sid']; ?>" />
 				<input type="hidden" name="edit_flag" value="1" />
+				<input type="hidden" name="old_name" value="<?php echo $editname_row['channel'] ?>" />
 				<td align="center"><input type="submit" value="Change Name" /></td>
 			</tr>
 		</table>

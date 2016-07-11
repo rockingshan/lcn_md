@@ -63,6 +63,8 @@ function confirmAction(){
 <tr><td><a href="export_package.php?par=power">Export Power package</a></td></tr>
 <tr><td><a href="submit_data.php">Get BAT Submition data</a></td></tr>
 <tr><td><a href="channel_add.php">Add a new channel</a></td></tr>
+<tr><td><a href="create_master.php">Create LCN file</a></td></tr>
+
 </table>
 <div class="datagrid">
 <table align="center">

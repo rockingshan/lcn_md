@@ -50,7 +50,16 @@ $objPHPExcel->getProperties()->setCreator("Meghbela Digital")
 							 ->setDescription("Meghbela Package")
 							 ->setKeywords("Package Excel")
 							 ->setCategory("Package");
-//SET HEADING
+//SET header & Footer
+$objPHPExcel->getActiveSheet()->getHeaderFooter()->setOddHeader('&L&G&C&HMeghbela Channel Package');
+$objPHPExcel->getActiveSheet()->getHeaderFooter()->setOddFooter('&L&B' . $objPHPExcel->getProperties()->getTitle() . '&RPage &P of &N');
+
+// Add a drawing to the header
+$objDrawing = new PHPExcel_Worksheet_HeaderFooterDrawing();
+$objDrawing->setName('Meghbela logo');
+$objDrawing->setPath('images/android-icon-72x72.png');
+$objDrawing->setHeight(36);
+$objPHPExcel->getActiveSheet()->getHeaderFooter()->addImage($objDrawing, PHPExcel_Worksheet_HeaderFooter::IMAGE_HEADER_LEFT);
 
 $heading=strtoupper($pack_var)." DIGITAL @ Rs ".$pack_price." Without Tax";					 
 // Add Heading
