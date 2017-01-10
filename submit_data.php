@@ -6,6 +6,8 @@ if (!isset($_SESSION['user'])) {
 //starting the connection to db
 require_once "include/connect.php";
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
+
 date_default_timezone_set('Asia/Kolkata');
 
 $ts_array=array();
@@ -131,8 +133,8 @@ while($row = mysqli_fetch_array($result)){
   $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowcount, $row['channel']);
   $rowcount++;
 }
-$file_name="LCN ".Date('Ymd').".xlsx";
-$full_file_name="D:/MEGA/LCN BACKUP/".$file_name;
+$file_name=$_SESSION['city']."_LCN ".Date('Ymd').".xlsx";
+$full_file_name="F:/MEGA/LCN BACKUP/".$file_name;
 $objPHPExcel->setActiveSheetIndex(0);
 
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');

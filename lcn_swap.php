@@ -6,6 +6,7 @@ if (!isset($_SESSION['user'])) {
 //starting the connection to db
 require_once "include/connect.php";
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 
 $swap_sid=$_GET['sid'];
 $edit_sql= "SELECT * from channel_tb WHERE sid='$swap_sid'";

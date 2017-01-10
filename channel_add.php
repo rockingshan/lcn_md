@@ -8,6 +8,7 @@ if (!isset($_SESSION['user'])) {
 include ("include/connect.php");
 include 'include/hex_maker.php';
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 
 $blank_lcn_sql = "SELECT * from lcn_tb WHERE lcn_tb.lcn NOT IN (SELECT lcn FROM channel_tb)";
 $blank_lcn_result = mysqli_query($con, $blank_lcn_sql);

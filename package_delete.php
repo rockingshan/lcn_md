@@ -6,6 +6,8 @@ if (!isset($_SESSION['user'])) {
 //starting the connection to db
 include("include/connect.php");
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
+
 $delete_sid=$_GET['sid'];
     $sql1 = "DELETE FROM `channel_tb` WHERE `sid`='$delete_sid'";
     $sql2 = "DELETE FROM `sid_tb` WHERE `sid`='$delete_sid'";

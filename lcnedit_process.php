@@ -5,7 +5,7 @@ if (!isset($_SESSION['user'])) {
 }
 //starting the connection to db
 require_once "include/connect.php";
-
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 
 $new_lcn=$_POST['new_lcn'];
 $edit_sid=$_POST['edit_sid'];

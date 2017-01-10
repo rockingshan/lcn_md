@@ -4,7 +4,7 @@ $_SESSION['sidcounter']=array();
 //starting the connection to db
 require_once "../include/connect.php";
 include '../include/log.php';
-
+mysqli_select_db($con,'meghbela_lcn_db_kol') or die("No database");
 $user=mysqli_real_escape_string($con,$_POST['user']);
 $pass=mysqli_real_escape_string($con,$_POST['pass']);
 $hashed_pass=md5($pass);
@@ -14,7 +14,8 @@ $res_data=mysqli_fetch_array($res_submit);
 if ($res_data) {
 	$_SESSION['user']=$user;
 	$_SESSION['pass']=$pass;
-	header("location:../secure_page.php");
+	$_SESSION['select_db']='';
+	header("location:../db_select.php");
 } else {
 	echo "Wrong username/password";
 	

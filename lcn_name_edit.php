@@ -6,6 +6,8 @@ if (!isset($_SESSION['user'])) {
 //starting the connection to db
 require_once "include/connect.php";
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
+
 if (isset($_GET['edit_flag'])){
 	$new_name=$_GET['new_name'];
 	$old_sid=$_GET['editname_sid'];
@@ -53,7 +55,7 @@ alert("Changing name here will not update name in PSI/SI. You will have to updat
 			</tr>
 			<tr>
 				<td align="center"><?php echo $editname_row['channel'] ?></td>
-				<td align="center"><input type="text" name="new_name"/></td>
+				<td align="center"><input type="text" name="new_name" value="<?php echo $editname_row['channel'] ?>"/></td>
 				<input type="hidden" name="editname_sid" value="<?php echo $editname_row['sid']; ?>" />
 				<input type="hidden" name="edit_flag" value="1" />
 				<input type="hidden" name="old_name" value="<?php echo $editname_row['channel'] ?>" />

@@ -13,7 +13,7 @@ $new_lcn=$_POST['new_lcn'];
 $edit_sid=$_POST['edit_sid'];
 
 $new_lcn_hex=hex_convert($new_lcn);
-
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 $lcn_edit_sql="UPDATE channel_tb SET `lcn`='$new_lcn', `lcnhex`='$new_lcn_hex' WHERE sid='$edit_sid'";
 $lcn_edit_result=mysqli_query($con, $lcn_edit_sql);
 if ($lcn_edit_result) {

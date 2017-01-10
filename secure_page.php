@@ -7,9 +7,27 @@ session_start();
 if (!isset($_SESSION['user'])) {
 	header("location:index.php");	
 }
+if(isset($_POST['selectdb'])){
+if ($_POST['selectdb']=='db_1') {
+  $_SESSION['select_db'] = 'meghbela_lcn_db_kol';
+  $_SESSION['city'] = 'Kolkata';
+}elseif ($_POST['selectdb']=='db_2') {
+  $_SESSION['select_db'] = 'meghbela_lcn_db_bpc';
+  $_SESSION['city'] = 'Berhampore';
+}elseif ($_POST['selectdb']=='db_3') {
+  $_SESSION['select_db'] = 'meghbela_lcn_db_hlz';
+  $_SESSION['city'] = 'Haldia';
+}elseif ($_POST['selectdb']=='db_4') {
+  $_SESSION['select_db'] = 'meghbela_lcn_db_bqa';
+  $_SESSION['city'] = 'Bankura';
+}
+}
 //starting the connection to db
 require_once "include/connect.php";
 include 'include/log.php';
+//Seleceting the database
+
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb WHERE channel_tb.lcn=lcn_tb.lcn ORDER BY lcn_tb.lcn";
 
@@ -55,6 +73,7 @@ function confirmAction(){
 		<a href="logout.php"><input type="submit" name="logout" value="Logout"  /></a>
 	</td>
 </tr>
+<tr><td style="font-weight:bold;font-size:20px;">Current city : <?php echo $_SESSION['city'] ?></td></tr>
 <tr><td><a href="export.php">Export LCN</a></td></tr>
 <tr><td><a href="export_package.php?par=bronze">Export Bronze package</a></td></tr>
 <tr><td><a href="export_package.php?par=silver">Export Silver package</a></td></tr>
@@ -63,7 +82,7 @@ function confirmAction(){
 <tr><td><a href="export_package.php?par=power">Export Power package</a></td></tr>
 <tr><td><a href="submit_data.php">Get BAT Submition data</a></td></tr>
 <tr><td><a href="channel_add.php">Add a new channel</a></td></tr>
-<tr><td><a href="create_master.php">Create LCN file</a></td></tr>
+<tr><td><a href="create_master.php">Create LCN Master file</a></td></tr>
 
 </table>
 <div class="datagrid">

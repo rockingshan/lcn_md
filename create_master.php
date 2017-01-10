@@ -1,7 +1,9 @@
 <?php
-
+session_start();
 include("include/connect.php");
 include 'include/log.php';
+mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
+
 error_reporting(E_ALL);
 ini_set('display_errors', TRUE);
 ini_set('display_startup_errors', TRUE);
@@ -107,7 +109,7 @@ while($row = mysqli_fetch_array($result)){
   $rowcount++;
 }
 
-$file_name="LCN.xlsx";
+$file_name=$_SESSION['city']."_LCN.xlsx";
 $objPHPExcel->setActiveSheetIndex(0);
 // Redirect output to a client’s web browser (Excel2007)
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

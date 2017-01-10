@@ -6,6 +6,8 @@ function printpackage($in_pack='')
 $chn_var="";
 $chn_array[]=array();
 $i=0;
+mysqli_select_db($con,'meghbela_lcn_db_kol') or die("No database");
+
 $sql_t="SELECT * FROM channel_tb JOIN lcn_tb ON channel_tb.lcn=lcn_tb.lcn JOIN package_tb ON channel_tb.sid=package_tb.sid WHERE package_tb.$in_pack='YES'";
 $sql_tr1=mysqli_query($con, $sql_t);
 $sql_tr2=mysqli_query($con, $sql_t);

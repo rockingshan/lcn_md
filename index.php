@@ -4,7 +4,7 @@
 <?php
 //starting the connection to db
 include("include/connect.php");
-			
+mysqli_select_db($con,'meghbela_lcn_db_kol') or die("No database");
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb,package_tb WHERE channel_tb.lcn=lcn_tb.lcn AND channel_tb.sid=package_tb.sid ORDER BY lcn_tb.lcn";
 
