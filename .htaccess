@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Enable Rewriting
 RewriteEngine on
 
@@ -11,17 +10,3 @@ RewriteRule .* custom_404.html [L]
 #   Output: user.php?id=NAME
 RewriteRule ^lcn_edit/([0-9]+)/?$ lcn_edit.php?sid=$1
 
-=======
-# Enable Rewriting
-RewriteEngine on
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* custom_404.html [L]
-
-# Rewrite user URLs
-#   Input:  user/NAME/
-#   Output: user.php?id=NAME
-RewriteRule ^lcn_edit/([0-9]+)/?$ lcn_edit.php?sid=$1
-
->>>>>>> lcn_md/master
