@@ -7,8 +7,11 @@ if (!isset($_SESSION['user'])) {
 //starting the connection to db
 require_once "include/connect.php";
 include 'include/log.php';
+<<<<<<< HEAD
 mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 
+=======
+>>>>>>> lcn_md/master
 if (isset($_GET['edit_flag'])){
 	$old_sid=$_GET['editpack_sid'];
 	$bronze=$_GET['bronzepack'];
