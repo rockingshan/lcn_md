@@ -9,7 +9,7 @@ if (!isset($_SESSION['user'])) {
 }
 if(isset($_POST['selectdb'])){
 if ($_POST['selectdb']=='db_1') {
-  $_SESSION['select_db'] = 'meghbela_lcn_db_kol';
+  $_SESSION['select_db'] = 'meghbela_lcn_db_alpha';
   $_SESSION['city'] = 'Kolkata';
 }elseif ($_POST['selectdb']=='db_2') {
   $_SESSION['select_db'] = 'meghbela_lcn_db_bpc';
