@@ -4,7 +4,7 @@
 <?php
 //starting the connection to db
 include("include/connect.php");
-mysqli_select_db($con,'meghbela_lcn_db_kol') or die("No database");
+mysqli_select_db($con,'meghbela_lcn_db_alpha') or die("No database");
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb,package_tb WHERE channel_tb.lcn=lcn_tb.lcn AND channel_tb.sid=package_tb.sid ORDER BY lcn_tb.lcn";
 
@@ -23,70 +23,67 @@ if (!$result) { // add this check.
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
+<!-- <link rel="stylesheet" type="text/css" href="style/main.css" />
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  /> -->
+
+<!---  Start New styling -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap-table.css">
+<script src="lib/jquery-3.1.1.min.js"></script>
+<script src="lib/bootstrap.min.js"></script>
+<script src="lib/bootstrap-table.js"></script>
+<script src="lib/bootstrap-table-toolbar.js"></script>
+
 <title>Meghbela Digital LCN</title>
 </head>
 
 <body>
-	<div class="datagrid">
-<table align="center" class="auth">
-<tr>
-	<td align="left" valign="top">
-		<td align="left" valign="top"><form autocomplete="off" id="login" action="./process/submit.php" method="post">
-			<tr align="left" valign="top"><input type="text" name="user" value="" /></tr>
-			<tr align="left" valign="top"><input type="password" name="pass" value="" /></tr>
-			<tr align="left" valign="top"><input type="submit" name="submit" value="Submit" /></tr>
-			
-		</form>
-			
-		</td>
-	</td>
-<td>
-<?php
-//initializing the display variable to print the table on webpage
-$display = "<table cellpadding=\"1\" align=\"center\">
+	<div class="container">
+
+<!--initializing the display variable to print the table on webpage -->
+<table cellpadding="1" align="center"
+data-toggle="table"
+data-search="true"
+data-advanced-search="true"
+data-id-table="advancedTable"
+>
+  <thead>
   <tr>
     <th>GENRE</th>
-    <th>LCN</th>
-    <th>SID</th>
-    <th>CHANNEL NAME </th>
+    <th data-sortable="true">LCN</th>
+    <th data-sortable="true">SID</th>
+    <th data-field="name">CHANNEL NAME</th>
     <th>Bronze Digital </th>
     <th> Silver Digital </th>
     <th> Gold Digital </th>
     <th> Platinum Digital </th>
     <th> Power pack </th>
     <th> Price(&#8377) </th>
-  </tr>";
+  </tr>
+</thead>
+<tbody>
+  <?php
+  $display = '';
   //sending the results to an array and printing
-  while($row = mysqli_fetch_array($result)) { 
-  $display.="<tr>
+  while($row = mysqli_fetch_array($result)) {
+  $display .="<tr>
     <td>".$row['genre']."</td>
     <td>".$row['lcn']."</td>
     <td>".$row['sid']."</td>
-    <td class=\"chn\">".$row['channel']."</td>
+    <td><strong>".$row['channel']."</strong></td>
     <td>".$row['bronze']."</td>
     <td>".$row['silver']."</td>
     <td>".$row['gold']."</td>
     <td>".$row['platinum']."</td>
     <td>".$row['power']."</td>
     <td>".$row['price']."</td>
-    
+
   </tr>";
   }
-  $display.= "</table>";
   echo $display;
-  
  ?>
-</td>
-<!--<td valign="top"><form action = "export.php" method = "get">
-       <input type = "hidden" name = "body" value = "" >
-       <input type = "submit" name = "submit" Value = "Export to excel">
-    </form> 
-</td> -->
-</tr>
-</table>
-
+ </tbody>
+ </table>
 </div>
 </body>
 </html>
