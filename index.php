@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <?php
@@ -23,21 +23,63 @@ if (!$result) { // add this check.
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="style/login.css">
 <!-- <link rel="stylesheet" type="text/css" href="style/main.css" />
 <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  /> -->
 
 <!---  Start New styling -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
 <link rel="stylesheet" href="lib/bootstrap-table.css">
-<script src="lib/jquery-3.1.1.min.js"></script>
-<script src="lib/bootstrap.min.js"></script>
+
+<script src="lib/login.js"></script>
+
 <script src="lib/bootstrap-table.js"></script>
 <script src="lib/bootstrap-table-toolbar.js"></script>
+
+
 
 <title>Meghbela Digital LCN</title>
 </head>
 
 <body>
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Meghbela LCN</a>
+    </div>
+    <ul class="nav navbar-nav">
+  <li><a href="export.php"><span class="glyphicon glyphicon-save"></span>Download LCN</a></li>
+</ul>
+    <!-- <ul class="nav navbar-nav navbar-right">
+      <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul> -->
+  </div>
+</nav>
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	  <div class="modal-dialog">
+				<div class="loginmodal-container">
+					<h1>Login for Advanced Features</h1><br>
+				  <form class="form-signin" method="post" id="login-form">
+            <div id="error">
+        <!-- error will be shown here ! -->
+        </div>
+					<input type="text" name="user" placeholder="Username">
+					<input type="password" name="pass" placeholder="Password">
+					<!-- <input type="submit" name="login" class="login loginmodal-submit" value="Login"> -->
+          <button type="submit" class="btn btn-default" name="btn-login" id="btn-login">
+      <span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
+   </button>
+				  </form>
+
+				</div>
+			</div>
+		  </div>
+
 	<div class="container">
 
 <!--initializing the display variable to print the table on webpage -->
@@ -46,27 +88,28 @@ data-toggle="table"
 data-search="true"
 data-advanced-search="true"
 data-id-table="advancedTable"
->
+class="table table-striped">
   <thead>
   <tr>
     <th>GENRE</th>
     <th data-sortable="true">LCN</th>
-    <th data-sortable="true">SID</th>
+    <th data-field="sid" data-sortable="true">SID</th>
     <th data-field="name">CHANNEL NAME</th>
-    <th>Bronze Digital </th>
-    <th> Silver Digital </th>
-    <th> Gold Digital </th>
-    <th> Platinum Digital </th>
-    <th> Power pack </th>
-    <th> Price(&#8377) </th>
+    <th data-field="brn" data-sortable="true">Bronze Digital </th>
+    <th data-field="sil" data-sortable="true"> Silver Digital </th>
+    <th data-field="gold" data-sortable="true"> Gold Digital </th>
+    <th data-field="pla" data-sortable="true"> Platinum Digital </th>
+    <th data-field="pw" data-sortable="true"> Power pack </th>
+    <th> A La Carte Price(&#8377) </th>
   </tr>
 </thead>
 <tbody>
+  <tr>
   <?php
   $display = '';
   //sending the results to an array and printing
   while($row = mysqli_fetch_array($result)) {
-  $display .="<tr>
+  $display .="
     <td>".$row['genre']."</td>
     <td>".$row['lcn']."</td>
     <td>".$row['sid']."</td>
@@ -84,6 +127,25 @@ data-id-table="advancedTable"
  ?>
  </tbody>
  </table>
+</div>
+
+
+<div class="copyright">
+  <div class="container">
+    <div class="col-md-6">
+      <p>© 2017 - All Rights with Meghbela Digital</p>
+    </div>
+    <div class="col-md-6">
+      <ul class="bottom_ul">
+        <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal">Login</a></li>
+        <!-- <li><a href="#">About us</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Faq's</a></li>
+        <li><a href="#">Contact us</a></li>
+        <li><a href="#">Site Map</a></li> -->
+      </ul>
+    </div>
+  </div>
 </div>
 </body>
 </html>

@@ -2,6 +2,10 @@
 session_start();
 include("include/connect.php");
 include 'include/log.php';
+if(!isset($_SESSION['select_db']) || !isset($_SESSION['city'])){
+	$_SESSION['select_db'] = 'meghbela_lcn_db_kol';
+	$_SESSION['city'] = 'Kolkata';
+}
 mysqli_select_db($con,$_SESSION['select_db']) or die("No database");
 
 error_reporting(E_ALL);
@@ -55,11 +59,11 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->applyFromArray(
 	 		)
 		)
 );
-			
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);	
+
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);	
-$objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+$objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle('B1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle('C1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
@@ -72,7 +76,7 @@ if (!$result) { // add this check.
 }
 $rowcount=2;
 while($row = mysqli_fetch_array($result)){
-	
+
 	$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowcount, $row['genre']);
   $objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowcount, $row['lcn']);
   $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowcount, $row['channel']);

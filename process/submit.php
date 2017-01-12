@@ -12,13 +12,13 @@ $sql_submit="SELECT * from auth_tb WHERE user='$user' and pass='$hashed_pass'";
 $res_submit=mysqli_query($con,$sql_submit);
 $res_data=mysqli_fetch_array($res_submit);
 if ($res_data) {
+	echo "ok";
 	$_SESSION['user']=$user;
-	$_SESSION['pass']=$pass;
 	$_SESSION['select_db']='';
-	header("location:../db_select.php");
+	//header("location:../db_select.php");
 } else {
 	echo "Wrong username/password";
-	
+
 }
 
 
