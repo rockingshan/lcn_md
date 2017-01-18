@@ -2,7 +2,7 @@
     session_start();
 
 if (!isset($_SESSION['user'])) {
-	header("location:index.php");	
+	header("location:index.php");
 }
 //starting the connection to db
 require_once "include/connect.php";
@@ -46,29 +46,28 @@ if (!$result) { // add this check.
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
-<script src="jquery/jquery-2.2.3.js"></script>
-<script>
 
-</script>
 <title>Package EDIT Mode</title>
 </head>
 
 <body>
+  <div class="container-fluid">
 <form action="package_edit.php" method="get">
-	<div class="datagrid">
-	<table align="center">
+
+	<table class="table">
+    <thead>
 		<tr>
     <th>LCN</th>
-    <th>CHANNEL NAME </th>
-    <th>Bronze Digital </th>
-    <th> Silver Digital </th>
-    <th> Gold Digital </th>
-    <th> Platinum Digital </th>
-    <th> Power pack </th>
+    <th>Name </th>
+    <th>Bronze </th>
+    <th> Silver </th>
+    <th> Gold </th>
+    <th> Platinum </th>
+    <th> Power </th>
     <th> Price(&#8377) </th>
   </tr>
+</thead>
+<tbody>
   <tr>
     <td><?php echo $package_result['lcn'] ?></td>
     <td><?php echo $package_result['channel'] ?></td>
@@ -97,17 +96,18 @@ if (!$result) { // add this check.
  <tr>
  	<input type="hidden" name="editpack_sid" value="<?php echo $package_result['sid']; ?>" />
 				<input type="hidden" name="edit_flag" value="1" />
-				<td class="authtd" colspan="8" align="middle"><input type="submit" class="btn" value="Change Package" /><a href="secure_page.php"><input type="button" class="btn" name="edit" value="Get Back to Overview"></a></td>
- </tr>	
+				<td class="authtd" colspan="8" align="middle"><input type="submit" class="btn btn-primary" value="Change Package" /></td>
+ </tr>
+ </tbody>
 	</table>
 	</div>
 </form>
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 </body>

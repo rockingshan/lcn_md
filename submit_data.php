@@ -17,7 +17,7 @@ foreach($sid_un_array as $sid_value){
 	$sid_result=mysqli_query($con, $sid_sql);
 	$sid_res_row=mysqli_fetch_array($sid_result);
 	$ts_array[]=$sid_res_row['ts'];
-	
+
 }
 
 $ts_un_array=array_unique($ts_array);
@@ -34,25 +34,34 @@ $ts_un_array=array_unique($ts_array);
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+
+<link rel="stylesheet" href="lib/bootstrap-table.css">
+<script src="lib/bootstrap-table.js"></script>
+
 <title>LCN submit data</title>
 <script>(function(){
     new Clipboard('siddata');
-})();</script> 
+})();</script>
 </head>
 <body>
-	<div class="datagrid">
-	<table align="center">
+	<div class="container">
+	<table class="table table-striped">
+		<thead>
 		<tr><th>TS Number</th><th>BAT Submition data</th></tr>
-		
+</thead>
+<tbody>
 <?php
 foreach($ts_un_array as $ts_value){
 	$sidlcnout="";
 	$ts_sql="SELECT sid FROM sid_tb WHERE ts=$ts_value";
 	$ts_result=mysqli_query($con,$ts_sql);
-	
+
 	while($ts_res_row=mysqli_fetch_array($ts_result)){
 		$sidlcn_sql="SELECT * from channel_tb,sid_tb WHERE channel_tb.sid='".$ts_res_row['sid']."' AND sid_tb.sid='".$ts_res_row['sid']."'";
 		$sidlcn_result=mysqli_query($con,$sidlcn_sql);
@@ -63,7 +72,12 @@ foreach($ts_un_array as $ts_value){
 	echo "<td id='siddata'>".$sidlcnout."</tr>";
 }
 
-// 
+?>
+
+</tbody>
+</table>
+<?php
+//
 //
 //Autosave Excel data LCN backup block ---- start
 //
@@ -110,11 +124,11 @@ $objPHPExcel->getActiveSheet()->getStyle('A1:C1')->applyFromArray(
 	 		)
 		)
 );
-			
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);	
+
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
 $objPHPExcel->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);	
-$objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+$objPHPExcel->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+$objPHPExcel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle('B1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 $objPHPExcel->getActiveSheet()->getStyle('C1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 
@@ -127,7 +141,7 @@ if (!$result) { // add this check.
 }
 $rowcount=2;
 while($row = mysqli_fetch_array($result)){
-	
+
 	$objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowcount, $row['genre']);
   $objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowcount, $row['lcn']);
   $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowcount, $row['channel']);
@@ -140,14 +154,14 @@ $objPHPExcel->setActiveSheetIndex(0);
 $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
 $objWriter->save(str_replace(__FILE__,$full_file_name,__FILE__));
 
-// 
+//
 //
 //Autosave Excel data LCN backup block ---- stop
 //
 
 ?>
-</table>
+
+<h3 align="center"><a href="secure_page.php">Get back to Edit Mode</a></h3>
 </div>
-<h4 align="center"><a href="secure_page.php">Get back to Edit Mode</a></h3>
 </body>
 </html>

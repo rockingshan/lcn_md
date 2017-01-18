@@ -30,7 +30,7 @@ $rendererName = PHPExcel_Settings::PDF_RENDERER_MPDF;
 //$rendererLibrary = 'tcPDF5.9';
 $rendererLibrary = 'mpdf60';
 //$rendererLibrary = 'domPDF0.6.0beta3';
-$rendererLibraryPath = 'C:\xampp\htdocs\mpdf60';
+$rendererLibraryPath = 'C:\wamp64\www\mpdf60';
 
 if (!PHPExcel_Settings::setPdfRenderer(
 		$rendererName,
@@ -63,7 +63,7 @@ $objDrawing->setPath('images/android-icon-72x72.png');
 $objDrawing->setHeight(36);
 $objPHPExcel->getActiveSheet()->getHeaderFooter()->addImage($objDrawing, PHPExcel_Worksheet_HeaderFooter::IMAGE_HEADER_LEFT);
 
-$heading=strtoupper($pack_var)." DIGITAL @ Rs ".$pack_price." Without Tax";					 
+$heading=strtoupper($pack_var)." DIGITAL @ Rs ".$pack_price." Without Tax";
 // Add Heading
 $objPHPExcel->setActiveSheetIndex(0)
             ->setCellValue('A1', $heading);
@@ -113,18 +113,18 @@ $objPHPExcel->getActiveSheet()->getStyle('A'.$i)->getAlignment()->setHorizontal(
 
 
 
-//setting custom width of column	
-$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth("100");	
-$objPHPExcel->getActiveSheet()->getStyle('A')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);	
+//setting custom width of column
+$objPHPExcel->getActiveSheet()->getColumnDimension('A')->setWidth("100");
+$objPHPExcel->getActiveSheet()->getStyle('A')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
 //Text wrap option here
-$objPHPExcel->getActiveSheet()->getStyle('A1:A100')->getAlignment()->setWrapText(true); 
+$objPHPExcel->getActiveSheet()->getStyle('A1:A100')->getAlignment()->setWrapText(true);
 //Set vertical alignment
 $objPHPExcel->getActiveSheet()->getStyle('A1:A100')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_TOP);
 
 
 foreach ($print_pack as $key_1 => $value_1) {
 	foreach ($value_1 as $key_2 => $value_2) {
-		
+
 $objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowcount, $key_2);
 $rowcount++;
 $objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowcount, $value_2);

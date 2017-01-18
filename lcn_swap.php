@@ -31,50 +31,48 @@ $swap_result=mysqli_query($con, $swap_sql);
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-		<h1 align="center">Swap LCN here</h1>
-		<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
+		<h3 align="center">Swap LCN </h3>
 	</head>
-	
+
 	<body>
+		<div class="container-fluid">
 		<form action="./process/swap_process.php" method="post">
-		<table align="center" cellspacing="3" cellpadding="3">
+		<table class="table">
 			<tr>
-				<th>SID</th><th>CHANNEL</th><th>LCN</th>
+				<th>SID</th><th class="text-center">CHANNEL</th><th class="text-right">LCN</th>
 			</tr>
 			<tr>
-				<td align="center"><?php echo $edit_row['sid'] ?></td>
-				<td align="center"><?php echo $edit_row['channel'] ?></td>
-				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
+				<td><?php echo $edit_row['sid'] ?></td>
+				<td class="text-center"><?php echo $edit_row['channel'] ?></td>
+				<td class="text-right"><?php echo $edit_row['lcn'] ?></td>
 			</tr>
-			<tr align="center">
+			<tr align="center" style="margin-top:10px">
 				<th></th><th>Select Swapping LCN</th>
 			</tr>
 			<tr>
-				
+
 				<td colspan="3" align="center">
 					<?php
-						echo '<select name="swap_sid">';
+						echo '<select name="swap_sid" class="form-control" style="margin-top:10px">';
 						while($swap_row=mysqli_fetch_array($swap_result))
 						{
-							echo "<option value=".$swap_row['sid'].">".$swap_row['sid']."   ||   ".$swap_row['channel']."   ||   ".$swap_row['lcn']."</option>";
+							echo "<option value=".$swap_row['sid'].">".$swap_row['sid']."        ||       ".$swap_row['channel']."       ||        ".$swap_row['lcn']."</option>";
 						}
 						echo "</select>";
 						?>
 				</td>
 				</tr>
 				<tr>
-				<td colspan="1" align="center">
+				<td >
 					<input type="hidden" name="old_sid" value="<?php echo $edit_row['sid']; ?>" />
-					<input class="btn" type="submit" value="Swap LCN" />
+					<input class="btn btn-primary" type="submit" value="Swap LCN"  style="margin-top:10px"/>
 				</td>
-				<td align="center"><a href="secure_page.php"><input type="button" class="btn" name="edit" value="Overview"></a></td>
-			</tr>
-			
+				</tr>
+</div>
 		</table>
 		</form>
-		
-		
-		
+
+
+
 	</body>
 </html>

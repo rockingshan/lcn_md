@@ -35,51 +35,51 @@ if (!$blank_lcn_result) { // add this check.
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-		<h1 align="center">Edit LCN here</h1>
-		<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
+		<h3 align="center">Edit LCN </h3>
 	</head>
-	
+
 	<body>
 		<form action="./process/lcnedit_process.php" method="post">
-			<div class="datagrid">
-		<table align="center" cellspacing="3" cellpadding="3">
+		<table>
+			<thead>
 			<tr>
-				<th>SID</th><th>CHANNEL</th><th>LCN</th>
+				<th>SID</th>
+				<th class="text-center">CHANNEL</th>
+				<th class="text-right">LCN</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><?php echo $edit_row['sid'] ?></td>
+				<td class="text-center"><?php echo $edit_row['channel'] ?></td>
+				<td class="text-right"><?php echo $edit_row['lcn'] ?></td>
+				</tr>
+			<tr>
+			<th>Select new LCN</th>
 			</tr>
 			<tr>
-				<td align="center"><?php echo $edit_row['sid'] ?></td>
-				<td align="center"><?php echo $edit_row['channel'] ?></td>
-				<td align="center"><?php echo $edit_row['lcn'] ?></td>	
-				<td align="center"><a href="lcn_name_edit.php?sid='<?php echo $edit_row['sid'] ?>'"><input type="button" class="btn" name="edit" value="Edit Name"></a></td>
-			</tr>
-			<tr align="center">
-				<th></th><th>Select new LCN</th>
-			</tr>
-			<tr>
-				<td></td>
-				<td>
+
+				<td colspan="2">
 					<?php
-						echo '<select name="new_lcn">';
+						echo '<select name="new_lcn" class="form-control">';
 						while($blank_lcn_row=mysqli_fetch_array($blank_lcn_result))
 						{
-							echo "<option value=".$blank_lcn_row['lcn'].">".$blank_lcn_row['genre']."   ||   ".$blank_lcn_row['lcn']."</option>";
+							echo "<option value=".$blank_lcn_row['lcn'].">".$blank_lcn_row['genre']."     ||     ".$blank_lcn_row['lcn']."</option>";
 						}
 						echo "</select>";
 						?>
 				</td>
+
 				<td>
 					<input type="hidden" name="edit_sid" value="<?php echo $edit_row['sid']; ?>" />
-					<input type="submit" class="btn" value="Change LCN" />
+					<input type="submit" class="btn btn-danger" value="Change LCN" style="margin:10px" />
 				</td>
-				<td align="center"><a href="secure_page.php"><input type="button" class="btn" name="edit" value="Get Back to Overview"></a></td>
-			</tr>
-			
+				</tr>
+</tbody>
 		</table>
-		</div>
 		</form>
-		
-		
-		
+
+
+
 	</body>
 </html>

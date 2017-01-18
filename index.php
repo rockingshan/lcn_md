@@ -129,7 +129,7 @@ class="table table-striped">
  </table>
 </div>
 
-
+<footer class="footer">
 <div class="copyright">
   <div class="container">
     <div class="col-md-6">
@@ -138,14 +138,10 @@ class="table table-striped">
     <div class="col-md-6">
       <ul class="bottom_ul">
         <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal">Login</a></li>
-        <!-- <li><a href="#">About us</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Faq's</a></li>
-        <li><a href="#">Contact us</a></li>
-        <li><a href="#">Site Map</a></li> -->
       </ul>
     </div>
   </div>
 </div>
+</footer>
 </body>
 </html>
