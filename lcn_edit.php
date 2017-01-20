@@ -39,6 +39,7 @@ if (!$blank_lcn_result) { // add this check.
 	</head>
 
 	<body>
+		<div class="container-fluid">
 		<form action="./process/lcnedit_process.php" method="post">
 		<table>
 			<thead>
@@ -80,6 +81,6 @@ if (!$blank_lcn_result) { // add this check.
 		</form>
 
 
-
+</div>
 	</body>
 </html>

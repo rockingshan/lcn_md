@@ -45,7 +45,7 @@ $editname_row = mysqli_fetch_array($editname_result);
 	</head>
 
 	<body>
-		<div class="container">
+		<div class="container-fluid">
 	<h2>Edit Channel Name</h2>
 
 		<form action="lcn_name_edit.php" method="get">

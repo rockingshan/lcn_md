@@ -91,7 +91,7 @@ if (!$result) { // add this check.
     <option value="YES" <?php if($package_result['power'] == "YES") { echo "SELECTED"; } ?>>YES</option>
     <option value=" " <?php if($package_result['power'] == "") { echo "SELECTED"; } ?>>NO</option
   </select></td>
-    <td><input type="text" name="price" value="<?php echo $package_result['price'] ?>" /></td>
+    <td><div class="form-group"><input class="form-control input-sm" id="inputsm" type="text" name="price" value="<?php echo $package_result['price'] ?>" /></div></td>
  </tr>
  <tr>
  	<input type="hidden" name="editpack_sid" value="<?php echo $package_result['sid']; ?>" />

@@ -32,11 +32,11 @@ if (isset($_GET['edit_flag'])) {
     $er_res = mysqli_query($con, $sql1);
     $er_res = mysqli_query($con, $sql2);
 	$er_res = mysqli_query($con, $sql3);
-	
+
 	if (!$er_res) {// add this check.
 		die('Invalid query: ' . mysqli_error($con));
 	}
-    
+
     $_SESSION['sidcounter'][]=$new_sid;
     write_log($new_sid." '".$new_name."' position ".$new_lcn." added");
 header("location:secure_page.php");
@@ -55,41 +55,45 @@ header("location:secure_page.php");
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
-		<h1 align="center">Add New Channel</h1>
-		<link rel="stylesheet" type="text/css" href="style/main.css" />
-<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato"  />
-<script src="jquery/jquery-2.2.3.js"></script>
+
 <script>
-	$(document).on('keyup', '.numeric-only', function(event) {
-		var v = this.value;
-		if ($.isNumeric(v) === false) {
-			//chop off the last char entered
-			this.value = this.value.slice(0, -1);
-		}
-	});
+$(document).on('keyup', '.numeric-only', function(event) {
+   var v = this.value;
+   if($.isNumeric(v) === false) {
+        //chop off the last char entered
+        this.value = this.value.slice(0,-1);
+   }
+});
 	​​
 </script>
 	</head>
-	
+
 <body>
-	<div align="center">
+	<div class="container-fluid">
+		<h3>Add New Channel</h3>
 		<form action="channel_add.php" method="get">
-		<table>
-			<tr><td>New SID</td><td><input type="number" name="sid" class="numeric-only" maxlength="5" /></td></tr>
-			<tr><td>New channel Name</td><td><input type="text" name="channel" class="cap_chn" />
-			<tr><td>Select Posiiton</td><td><?php
-			echo '<select name="new_lcn">';
+			<div class="form-group">
+				<label for="inputdefault">New SID</label>
+			<input class="form-control" id="inputdefault" type="number" name="sid" maxlength="5" />
+		</div>
+		<div class="form-group">
+			<label for="newchannel">New channel Name</label>
+			<input type="text" id="newchannel" name="channel" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="selectpos">Select Posiiton</label>
+			<?php
+			echo '<select name="new_lcn" id="selectpos" class="form-control">';
 			while ($blank_lcn_row = mysqli_fetch_array($blank_lcn_result)) {
 				echo "<option value=" . $blank_lcn_row['lcn'] . ">" . $blank_lcn_row['genre'] . "   ||   " . $blank_lcn_row['lcn'] . "</option>";
 			}
 			echo "</select>";
-						?></td></tr>
-			</td></tr>
+						?>
+			</div>
 			<input type="hidden" name="edit_flag" value="1" />
-			<tr><td colspan="2"><input type="submit" class="btn" name="submit" value="Add Channel" /><a href="secure_page.php"><input type="button" class="btn" name="edit" value="Get Back to Overview"></a></td></tr>
-		</table>
+			<input type="submit" class="btn btn-success" name="submit" value="Add Channel" />
 		</form>
 	</div>
-	                                               
+
 </body>
 </html>
