@@ -50,28 +50,7 @@ if (!$result) { // add this check.
 <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css" media="screen">
-.modal a.close-modal[class*="icon-"] {
-  top: -10px;
-  right: -10px;
-  width: 20px;
-  height: 20px;
-  color: #fff;
-  line-height: 1.25;
-  text-align: center;
-  text-decoration: none;
-  text-indent: 0;
-  background: #900;
-  border: 2px solid #fff;
-  -webkit-border-radius:  26px;
-  -moz-border-radius:     26px;
-  -o-border-radius:       26px;
-  -ms-border-radius:      26px;
-  -moz-box-shadow:    1px 1px 5px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-  box-shadow:         1px 1px 5px rgba(0,0,0,0.5);
-}
-</style>
+
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
