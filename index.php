@@ -4,7 +4,7 @@
 <?php
 //starting the connection to db
 include("include/connect.php");
-mysqli_select_db($con,'meghbela_lcn_db_alpha') or die("No database");
+mysqli_select_db($con,'meghbela_lcn_db_kol') or die("No database");
 //making the search in db
 $sql = "SELECT * FROM channel_tb,lcn_tb,package_tb WHERE channel_tb.lcn=lcn_tb.lcn AND channel_tb.sid=package_tb.sid ORDER BY lcn_tb.lcn";
 
@@ -53,7 +53,8 @@ if (!$result) { // add this check.
       <a class="navbar-brand" href="#">Meghbela LCN</a>
     </div>
     <ul class="nav navbar-nav">
-  <li><a href="export.php"><span class="glyphicon glyphicon-save"></span>Download LCN</a></li>
+  <li><a href="export"><span class="glyphicon glyphicon-save"></span>Download LCN</a></li>
+  <li><a href="package_master"><span class="glyphicon glyphicon-floppy-save"></span>Export Package Master</a></li>
 </ul>
     <!-- <ul class="nav navbar-nav navbar-right">
       <li><a href="#login-modal" data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

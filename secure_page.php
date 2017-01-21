@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 }
 if(isset($_POST['selectdb'])){
 if ($_POST['selectdb']=='db_1') {
-  $_SESSION['select_db'] = 'meghbela_lcn_db_alpha';
+  $_SESSION['select_db'] = 'meghbela_lcn_db_kol';
   $_SESSION['city'] = 'Kolkata';
 }elseif ($_POST['selectdb']=='db_2') {
   $_SESSION['select_db'] = 'meghbela_lcn_db_bpc';
@@ -117,28 +117,29 @@ function confirmAction(){
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-floppy-save"></span> Download LCN
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="export.php">Download LCN file</a></li>
-          <li><a href="create_master.php">Download Master LCN file</a></li>
+          <li><a href="export">Download LCN file</a></li>
+          <li><a href="create_master">Download Master LCN file</a></li>
         </ul>
       </li>
 			<li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-floppy-save"></span> Download Package details
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="export_package.php?par=bronze">Export Bronze package</a></li>
-          <li><a href="export_package.php?par=silver">Export Silver package</a></li>
-          <li><a href="export_package.php?par=gold">Export Gold package</a></li>
-					<li><a href="export_package.php?par=platinum">Export Platinum package</a></li>
-					<li><a href="export_package.php?par=power">Export Power package</a></li>
+          <li><a href="export_package?par=bronze">Export Bronze package</a></li>
+          <li><a href="export_package?par=silver">Export Silver package</a></li>
+          <li><a href="export_package?par=gold">Export Gold package</a></li>
+					<li><a href="export_package?par=platinum">Export Platinum package</a></li>
+					<li><a href="export_package?par=power">Export Power package</a></li>
+					<li><a href="package_master">Export Package Master</a></li>
         </ul>
       </li>
-      <li><a href="submit_data.php">Get BAT Submit Data</a></li>
-      <li><a href="channel_add.php" rel="modal:open">Add new Channel</a></li>
+      <li><a href="submit_data">Get BAT Submit Data</a></li>
+      <li><a href="channel_add" rel="modal:open">Add new Channel</a></li>
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
-			<li><a href="db_select.php"><strong><span class="glyphicon glyphicon-send"></span> <?php echo $_SESSION['city'] ?></strong></a></li>
-      <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+			<li><a href="db_select"><strong><span class="glyphicon glyphicon-send"></span> <?php echo $_SESSION['city'] ?></strong></a></li>
+      <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
     </ul>
   </div>
 </nav>
@@ -175,11 +176,11 @@ $display .="
 	<td>".$row['genre']."</td>
 	<td>".$row['lcn']."</td>
 	<td>".$row['sid']."</td>
-	<td><strong>".$row['channel']."</strong><a href=\"lcn_name_edit.php?sid=".$row['sid']."\" rel=\"modal:open\"><span class=\"pull-right\"><span class=\"glyphicon glyphicon-edit\" style=\"color:violet\"></span></span></a></td>
-	<td><a href=\"lcn_edit.php?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Edit Channel LCN\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-pencil\"></span></a></td>
-	<td><a href=\"lcn_swap.php?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Swap LCN with other Channel\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-transfer\" style=\"color:black\"></span></a></td>
-	<td><a href=\"package_edit.php?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Edit Package\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-scissors\" style=\"color:green\"></span></a></td>
-	<td><a href=\"package_delete.php?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Delete Channel\" onclick=\"return confirmAction()\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\"></span></a></td>
+	<td><strong>".$row['channel']."</strong><a href=\"lcn_name_edit?sid=".$row['sid']."\" rel=\"modal:open\"><span class=\"pull-right\"><span class=\"glyphicon glyphicon-edit\" style=\"color:violet\"></span></span></a></td>
+	<td><a href=\"lcn_edit?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Edit Channel LCN\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-pencil\"></span></a></td>
+	<td><a href=\"lcn_swap?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Swap LCN with other Channel\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-transfer\" style=\"color:black\"></span></a></td>
+	<td><a href=\"package_edit?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Edit Package\" rel=\"modal:open\"><span class=\"glyphicon glyphicon-scissors\" style=\"color:green\"></span></a></td>
+	<td><a href=\"package_delete?sid=".$row['sid']."\" data-toggle=\"tooltip\" title=\"Delete Channel\" onclick=\"return confirmAction()\"><span class=\"glyphicon glyphicon-remove\" style=\"color:red\"></span></a></td>
 </tr>";
 }
 echo $display;
